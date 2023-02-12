@@ -1,0 +1,8 @@
+
+JPA사용하기위한 기타 잡부레들 깔자
+1) 플젝은 강의에 따라 메이븐으로 했는데 그래들에 맞는 IO찾기
+- hibernate 6.1.6.Final
+- h2database -> 이거는 어차피 기존에 mysql에 적용할거니까 나중에 스프링까지 연관해서 강의나갈때 참고해서 수정하기
+
+JPA깔자 -> 여기서 DB종류, url, 아디, 비번적는데 컨피그인듯?
+2) src/main/resources에다가 META-INF 디렉토리만들고 안에다가 persistance.xml이란 파일생성 -> 강의노트의 코드 복붙
