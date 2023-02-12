@@ -34,6 +34,7 @@ public class persistenceContextMain {
 
 
 
+
 //            Member memberA = em.find(Member.class, "memberA");
 //            em.remove(memberA); // 엔티티 삭제
 
