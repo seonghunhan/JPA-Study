@@ -49,13 +49,15 @@ public class persistenceContextMain {
 
 
 
-//            // 찾고 데이터 변경 -> 객체만 바꿨는데 데이터가 바뀌네? persist없이?
-//            // -> pdf03의 엔티티 수정(변경 감지)참고
-//            // -> 마법같은거임
-//            // -> 커밋하는시점에 내부적으로 flush()후에 엔티티와 스냅샷을 비교함
-//            // -> entity랑 스냅샷을 비교하고 바뀐게 있으면 내부적으로 Update sql을 생성하고 db에 보냄
-//            Member member = em.find(Member.class, 150L);
-//            member.setName("ZZZZZZZ");
+            // 찾고 데이터 변경 -> 객체만 바꿨는데 데이터가 바뀌네? persist없이?
+            // -> pdf03의 엔티티 수정(변경 감지)참고
+            // -> 마법같은거임
+            // -> 커밋하는시점에 내부적으로 flush()후에 엔티티와 스냅샷을 비교함
+            // -> entity랑 스냅샷을 비교하고 바뀐게 있으면 내부적으로 Update sql을 생성하고 db에 보냄
+            Member member = em.find(Member.class, 150L);
+            member.setName("CCCCCCCC");
+
+
 
 
 
