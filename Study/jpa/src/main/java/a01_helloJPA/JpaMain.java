@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -20,7 +21,31 @@ public class JpaMain {
         tx.begin();
 
         try{
-            //code
+            //저장
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("member1");
+            //member.setTeam(team.getId()); // 여기가 객체지향성에 어긋남
+            member.setTeam(team);// 객체지향성 맵핑 여기서 팀을넣으면 알아서 포린키가져옴
+            em.persist(member);
+
+            // 이거해줘야 밑에서 조회가능
+            em.flush();
+            em.clear();
+
+            Member findMember = em.find(Member.class, member.getId());
+
+//            Team findTeam = findMember.getTeam();
+//            System.out.println("findTeam = " + findTeam.getName());
+
+            List<Member> members = findMember.getTeam().getMembers();
+
+            for (Member m : members){
+                System.out.println("m.getUsername() = " + m.getUsername());
+            }
 
 
 // JPQL 연습 -> 여기서 쿼리안에 들가는 Member는 Table이 아니고 엔티티 객체에 맵핑하는거임!!!!
@@ -43,11 +68,11 @@ public class JpaMain {
 //            System.out.println("findMember = " + findMember.getId());
 //            System.out.println("findMember = " + findMember.getName());
 
-//Insert
-            Member member = new Member();
-            member.setId(210L);
-            member.setName("abc");
-            em.persist(member);
+////Insert
+//            Member member = new Member();
+//            member.setId(210L);
+//            member.setName("abc");
+//            em.persist(member);
 
 // commit해야 DB로 날라감
             tx.commit();
